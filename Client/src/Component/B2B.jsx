@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { IoIosSunny } from "react-icons/io";
-import Footer from "./Footer";
+import Footer from "./Footer.jsx";
 
 const B2B = ({ darkMood, setdarkMood }) => {
   const [clientType, setClientType] = useState("");
@@ -15,7 +15,7 @@ const B2B = ({ darkMood, setdarkMood }) => {
     setResult(null);
 
     try {
-      const res = await fetch("http://localhost:5000/generate-b2b", {
+      const res = await fetch("https://ai-for-sustainable-commerce.onrender.com/generate-b2b", {
         method: "POST",
         headers: {
           "content-Type": "application/json"

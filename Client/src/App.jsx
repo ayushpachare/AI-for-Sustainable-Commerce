@@ -1,7 +1,7 @@
 import './App.css'
-import Hero from './Component/Hero.JSX'
-import Tag from './Component/tag'
-import B2B from './Component/B2B'
+import Hero from './Component/Hero.jsx'
+import Tag from './Component/tag.jsx'
+import B2B from './Component/B2B.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useState } from 'react'
 

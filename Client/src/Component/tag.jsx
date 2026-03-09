@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaMoon } from "react-icons/fa";
 import { IoIosSunny } from "react-icons/io";
-import Footer from "./Footer";
+import Footer from "./Footer.jsx";
 
 const Tag = ({ darkMood, setdarkMood }) => {
 
@@ -24,7 +24,7 @@ useEffect(() => {
 
   const fetchHistory = async () => {
 
-    const res = await fetch("http://localhost:5000/generate-tags/history")
+    const res = await fetch("https://ai-for-sustainable-commerce.onrender.com/generate-tags/history")
 
     const data = await res.json()
 
@@ -41,7 +41,7 @@ useEffect(() => {
     setResult({});
 
     try {
-      const res = await fetch("http://localhost:5000/generate-tags", {
+      const res = await fetch("https://ai-for-sustainable-commerce.onrender.com//generate-tags", {
         method: "POST",
         headers: {
           "content-Type": "application/json"
