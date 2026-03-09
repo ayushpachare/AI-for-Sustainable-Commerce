@@ -41,7 +41,7 @@ useEffect(() => {
     setResult({});
 
     try {
-      const res = await fetch("https://ai-for-sustainable-commerce.onrender.com//generate-tags", {
+      const res = await fetch("https://ai-for-sustainable-commerce.onrender.com/generate-tags", {
         method: "POST",
         headers: {
           "content-Type": "application/json"
