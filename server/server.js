@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGODB)
     console.log("MongoDB Connection Failed", err);
   })
 
-let port = 5000
+const port = process.env.PORT || 5000
  
 app.use(cors())
 app.use(express.json());
