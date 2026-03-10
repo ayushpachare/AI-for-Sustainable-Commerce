@@ -115,6 +115,8 @@ Return a JSON response with:
 4. Sustainability Filters (plastic-free, compostable, vegan, recycled)
 
 Ensure the response is clean JSON.
+
+
 Module 2: AI B2B Proposal Generator
 Architecture
 This module generates a sustainability-focused B2B proposal for companies based on their budget and requirements.
@@ -176,6 +178,8 @@ Return a structured JSON response containing:
 2. Budget allocation within the given budget
 3. Estimated cost breakdown
 4. Impact positioning summary
+
+
 Module 3: AI Impact Reporting Generator
 Architecture
 This module calculates the environmental impact of eco-friendly purchases and generates a readable sustainability report.
@@ -231,6 +235,8 @@ Carbon Emissions Avoided: {carbonAvoided} grams CO2
 Local Sourcing: {localSource}
 
 Generate a simple human-readable sustainability statement.
+
+
 Module 4: AI WhatsApp Support Bot
 Architecture
 This module provides automated customer support through WhatsApp.
