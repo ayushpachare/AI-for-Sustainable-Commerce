@@ -53,7 +53,7 @@ This system reduces manual catalog effort and improves product discoverability b
 
 ## Project Structure
 
-# AI Auto-Category & Tag Generator
+# 1 AI Auto-Category & Tag Generator
 
 ## Overview
 
@@ -77,7 +77,7 @@ This module follows a **full-stack architecture** using:
 
 # System Components
 
-## 1. Frontend (React)
+## 1. Frontend (React) 
 
 The frontend provides an interface where users enter product details.
 
@@ -223,8 +223,9 @@ Database
 
 ---
 ---
+---
 
-# AI B2B Proposal Generator
+# 2 AI B2B Proposal Generator
 
 ## Overview
 
@@ -359,8 +360,10 @@ Return a structured JSON response containing:
 
 ---
 ---
+---
 
-# AI Impact Reporting Generator
+
+# 3 AI Impact Reporting Generator
 
 ## Overview
 
@@ -370,68 +373,6 @@ This module analyzes order data, estimates environmental benefits such as **plas
 
 ---
 
-# Architecture
-
-This module combines **data retrieval, backend impact calculations, and AI-based report generation**.
-
-Technologies used:
-
-* **Backend:** Node.js + Express.js
-* **Database:** MongoDB
-* **AI Processing:** Gemini API
-
----
-
-# System Components
-
-## 1. Order Data (MongoDB)
-
-The system retrieves order information stored in the database, including:
-
-* Product details
-* Quantity ordered
-* Sustainability attributes
-
-This data is used to calculate the environmental impact of the purchase.
-
----
-
-## 2. Logic-Based Impact Calculation
-
-The backend performs calculations using predefined sustainability rules.
-
-Estimated metrics include:
-
-* **Plastic Saved**
-* **Carbon Emissions Avoided**
-
-Example logic may include:
-
-* Replacing plastic products with eco-friendly alternatives
-* Estimating carbon savings based on sustainable materials
-* Calculating environmental benefit based on product quantity
-
----
-
-## 3. AI Summary Generation
-
-After calculating the impact metrics, the backend sends this data to the **Gemini AI model**.
-
-The AI converts the technical metrics into a **human-readable sustainability report** that is easy for businesses or customers to understand.
-
----
-
-## 4. Database Storage
-
-The generated sustainability report is stored in **MongoDB** along with the related order data.
-
-This allows:
-
-* Viewing impact reports later
-* Tracking sustainability performance
-* Generating analytics or dashboards
-
----
 
 # System Flow
 
@@ -488,103 +429,13 @@ Generate a simple human-readable sustainability statement.
 ---
 ---
 
-# AI WhatsApp Support Bot
+# 4 AI WhatsApp Support Bot
 
 ## Overview
 
 The **AI WhatsApp Support Bot** provides automated customer support through WhatsApp for an eco-friendly ecommerce platform.
 
 The system receives customer queries through WhatsApp, processes them using backend logic and AI, and returns helpful responses. For complex issues such as refunds or complaints, the system escalates the conversation to a human support agent.
-
----
-
-# Architecture
-
-This module integrates **WhatsApp messaging APIs, backend processing, AI response generation, and database integration**.
-
-Technologies used:
-
-* **Backend:** Node.js + Express.js
-* **Messaging Integration:** WhatsApp Business API / Twilio WhatsApp API
-* **AI Processing:** Gemini API
-* **Database:** MongoDB
-
----
-
-# System Components
-
-## 1. WhatsApp Integration
-
-The system connects to WhatsApp using messaging APIs such as:
-
-* **WhatsApp Business API**
-* **Twilio WhatsApp API**
-
-Customer messages are received through **webhooks**, which send incoming message data to the backend server.
-
----
-
-## 2. Backend Processing
-
-The backend receives the incoming message and analyzes the **intent of the query**.
-
-Possible intents include:
-
-* Order status queries
-* Return policy questions
-* Refund requests
-* General customer support queries
-
-The backend determines how the request should be handled.
-
----
-
-## 3. Database Integration
-
-For queries related to **order status**, the system retrieves real order data from **MongoDB**.
-
-This allows the bot to provide accurate information such as:
-
-* Order confirmation
-* Shipping status
-* Delivery updates
-
----
-
-## 4. AI Response Generation
-
-For general support questions, the system sends the user query to **Gemini AI**.
-
-The AI generates helpful responses for:
-
-* Product questions
-* Sustainability information
-* Return policies
-* General customer assistance
-
----
-
-## 5. Escalation System
-
-Certain issues require human intervention.
-
-If the query involves:
-
-* **Refund requests**
-* **Customer complaints**
-* **High-priority support issues**
-
-The conversation is **escalated to a human support agent** for further assistance.
-
----
-
-## 6. Conversation Logging
-
-All conversations are stored in **MongoDB** for:
-
-* Monitoring customer interactions
-* Support analytics
-* Improving customer service quality
 
 ---
 
@@ -632,24 +483,3 @@ If the user asks about order status, use available order data.
 If the question relates to return policy, explain it simply.
 If the issue is related to refunds or complaints, recommend contacting human support.
 ```
-
----
-
-# Features
-
-* Automated WhatsApp customer support
-* AI-powered response generation
-* Order status retrieval from MongoDB
-* Smart query intent handling
-* Human escalation system
-* Conversation logging for analytics
-
----
-
-# Possible Future Improvements
-
-* Multilingual customer support
-* Sentiment analysis for customer messages
-* AI-powered refund automation
-* Customer support dashboard
-* Voice message support
