@@ -53,55 +53,118 @@ This system reduces manual catalog effort and improves product discoverability b
 
 ## Project Structure
 
-Module 1: AI Auto-Category & Tag Generator
-Architecture
-This module automatically generates product metadata using AI.
+# AI Auto-Category & Tag Generator
 
-Components
-1. Frontend (React)
-User enters:
+## Overview
 
-Product name
+The **AI Auto-Category & Tag Generator** is a module that automatically generates product metadata using AI.
+It analyzes product details and returns structured information such as category, sub-category, SEO tags, and sustainability filters.
 
-Product description
+This system helps e-commerce platforms automatically organize products and improve search visibility.
 
-The data is sent to the backend API.
+---
 
-2. Backend (Node.js + Express)
-The backend receives product information and sends it to the Gemini AI model.
+# Architecture
 
-3. AI Processing (Gemini API)
-The AI analyzes the product details and generates:
+This module follows a **full-stack architecture** using:
 
-Primary category (from predefined ecommerce categories)
+* **Frontend:** React.js
+* **Backend:** Node.js + Express.js
+* **AI Processing:** Gemini API
+* **Database:** MongoDB
 
-Sub-category
+---
 
-5–10 SEO tags
+# System Components
 
-Sustainability filters such as plastic-free, compostable, vegan, recycled
+## 1. Frontend (React)
 
-4. Database (MongoDB)
-The generated metadata is stored in MongoDB so it can be reused later and displayed in the history panel.
+The frontend provides an interface where users enter product details.
 
-Flow
-User Input
-↓
+User inputs:
+
+* Product Name
+* Product Description
+
+These inputs are sent to the backend API for AI processing.
+
+---
+
+## 2. Backend (Node.js + Express)
+
+The backend server:
+
+1. Receives product data from the frontend
+2. Sends the data to the Gemini AI model
+3. Processes the AI response
+4. Stores the generated metadata in MongoDB
+5. Returns the structured data to the frontend
+
+API Endpoint:
+
+```
+POST /generate-tags
+```
+
+---
+
+## 3. AI Processing (Gemini API)
+
+The Gemini AI model analyzes the product information and generates:
+
+* **Primary Category** (from predefined ecommerce categories)
+* **Sub Category**
+* **5–10 SEO Tags**
+* **Sustainability Filters**
+
+  * plastic-free
+  * compostable
+  * vegan
+  * recycled
+
+The AI returns a **structured JSON response**.
+
+---
+
+## 4. Database (MongoDB)
+
+The generated metadata is stored in **MongoDB**.
+
+This allows:
+
+* Reusing previously generated results
+* Displaying product history in the **History Panel**
+* Avoiding repeated AI calls for the same data
+
+---
+
+# System Flow
+
+```
+User Input (Product Name + Description)
+        ↓
+Frontend sends request to Backend
+        ↓
 Backend API (/generate-tags)
-↓
+        ↓
 Gemini AI Processing
-↓
+        ↓
 Structured JSON Response
-↓
+        ↓
 Store Data in MongoDB
-↓
+        ↓
 Display Results in Frontend
+```
 
-AI Prompt Design
-The prompt is designed to ensure the AI returns structured product metadata.
+---
 
-Example prompt:
+# AI Prompt Design
 
+The AI prompt ensures the response is **clean structured JSON**.
+
+Example Prompt:
+
+```
 Analyze the following product information and generate structured metadata.
 
 Product Name: {productName}
@@ -115,57 +178,153 @@ Return a JSON response with:
 4. Sustainability Filters (plastic-free, compostable, vegan, recycled)
 
 Ensure the response is clean JSON.
+```
 
+---
 
-Module 2: AI B2B Proposal Generator
-Architecture
-This module generates a sustainability-focused B2B proposal for companies based on their budget and requirements.
+# Features
 
-Components
-1. Input Layer
+* AI-based product categorization
+* Automatic SEO tag generation
+* Sustainability product filtering
+* MongoDB storage for history
+* Structured JSON responses
+* Full-stack architecture
 
-User provides:
+---
 
-Business type
+# Tech Stack
 
-Sustainability goals
+Frontend
 
-Budget limit
+* React.js
 
-2. Backend Processing
+Backend
 
-The backend sends the input data to the Gemini AI model.
+* Node.js
+* Express.js
 
-3. AI Proposal Generation
+AI
 
-The AI suggests:
+* Gemini API
 
-Sustainable product mix
+Database
 
-Budget allocation within the provided limit
+* MongoDB
 
-Estimated cost breakdown
+---
 
-Impact positioning summary
+# Future Improvements
 
-4. Structured Output
+* Admin dashboard for product analytics
+* AI product description generation
+* Bulk product processing
+* Advanced sustainability scoring
 
-The proposal is returned in JSON format so it can easily be used by other systems.
+---
+---
 
-Flow
+# AI B2B Proposal Generator
+
+## Overview
+
+The **AI B2B Proposal Generator** is a module that automatically generates a sustainability-focused business proposal for companies.
+
+Based on the company's **business type, sustainability goals, and budget**, the system uses AI to recommend a suitable mix of eco-friendly products and provide a structured proposal.
+
+This helps businesses adopt sustainable practices while staying within their budget.
+
+---
+
+# Architecture
+
+This module follows a **backend-driven AI architecture** where business inputs are analyzed by an AI model to generate a structured proposal.
+
+Technologies used:
+
+* **Backend:** Node.js + Express.js
+* **AI Processing:** Gemini API
+* **Output Format:** Structured JSON
+
+---
+
+# System Components
+
+## 1. Input Layer
+
+The user provides the following information:
+
+* **Business Type** (e.g., corporate office, restaurant, retail store)
+* **Sustainability Goals** (e.g., reduce plastic usage, adopt eco-friendly products)
+* **Budget Limit**
+
+These inputs are sent to the backend for processing.
+
+---
+
+## 2. Backend Processing
+
+The backend server:
+
+1. Receives the user input
+2. Sends the information to the Gemini AI model
+3. Processes the AI response
+4. Returns the structured proposal to the frontend
+
+API Endpoint:
+
+```
+POST /generate-proposal
+```
+
+---
+
+## 3. AI Proposal Generation (Gemini)
+
+The Gemini AI analyzes the provided information and generates a sustainability proposal including:
+
+* **Suggested Sustainable Product Mix**
+* **Budget Allocation within the provided limit**
+* **Estimated Cost Breakdown**
+* **Impact Positioning Summary** (environmental benefit explanation)
+
+The AI ensures the proposal is practical and aligned with sustainability goals.
+
+---
+
+## 4. Structured Output
+
+The generated proposal is returned in **JSON format**, which allows:
+
+* Easy integration with frontend dashboards
+* Reusability in other systems
+* Further analysis or reporting
+
+---
+
+# System Flow
+
+```
 User Input
-↓
+      ↓
 Backend API (/generate-proposal)
-↓
+      ↓
 Gemini AI Analysis
-↓
+      ↓
 Proposal Generation
-↓
+      ↓
 Structured JSON Output
+```
 
-AI Prompt Design
-Example prompt:
+---
 
+# AI Prompt Design
+
+The prompt is structured so the AI returns a **clear and usable proposal format**.
+
+Example Prompt:
+
+```
 Generate a sustainability-focused B2B product proposal.
 
 Business Type: {businessType}
@@ -178,55 +337,125 @@ Return a structured JSON response containing:
 2. Budget allocation within the given budget
 3. Estimated cost breakdown
 4. Impact positioning summary
+```
 
+---
 
-Module 3: AI Impact Reporting Generator
-Architecture
-This module calculates the environmental impact of eco-friendly purchases and generates a readable sustainability report.
+# Features
 
-Components
-1. Order Data (MongoDB)
+* AI-generated sustainability proposals
+* Budget-aware product recommendations
+* Structured JSON output for easy integration
+* Automated eco-friendly product suggestions
 
-The system retrieves:
+---
 
-Product details
+# Possible Future Improvements
 
-Quantity ordered
+* Save generated proposals in a database
+* Generate downloadable PDF proposals
+* Add carbon footprint impact calculation
+* Add industry-specific proposal templates
 
-Sustainability attributes
+---
+---
 
-2. Logic-based Impact Calculation
+# AI Impact Reporting Generator
 
-Backend logic estimates:
+## Overview
 
-Plastic saved
+The **AI Impact Reporting Generator** calculates the environmental impact of eco-friendly purchases and generates a readable sustainability report.
 
-Carbon emissions avoided
+This module analyzes order data, estimates environmental benefits such as **plastic saved and carbon emissions avoided**, and then uses AI to convert these metrics into a clear human-readable sustainability report.
 
-These calculations are based on predefined sustainability rules.
+---
 
-3. AI Summary Generation
+# Architecture
 
-The calculated values are sent to Gemini AI to create a human-readable impact report.
+This module combines **data retrieval, backend impact calculations, and AI-based report generation**.
 
-4. Database Storage
+Technologies used:
 
-The impact report is stored along with the order data.
+* **Backend:** Node.js + Express.js
+* **Database:** MongoDB
+* **AI Processing:** Gemini API
 
-Flow
-Order Data
-↓
+---
+
+# System Components
+
+## 1. Order Data (MongoDB)
+
+The system retrieves order information stored in the database, including:
+
+* Product details
+* Quantity ordered
+* Sustainability attributes
+
+This data is used to calculate the environmental impact of the purchase.
+
+---
+
+## 2. Logic-Based Impact Calculation
+
+The backend performs calculations using predefined sustainability rules.
+
+Estimated metrics include:
+
+* **Plastic Saved**
+* **Carbon Emissions Avoided**
+
+Example logic may include:
+
+* Replacing plastic products with eco-friendly alternatives
+* Estimating carbon savings based on sustainable materials
+* Calculating environmental benefit based on product quantity
+
+---
+
+## 3. AI Summary Generation
+
+After calculating the impact metrics, the backend sends this data to the **Gemini AI model**.
+
+The AI converts the technical metrics into a **human-readable sustainability report** that is easy for businesses or customers to understand.
+
+---
+
+## 4. Database Storage
+
+The generated sustainability report is stored in **MongoDB** along with the related order data.
+
+This allows:
+
+* Viewing impact reports later
+* Tracking sustainability performance
+* Generating analytics or dashboards
+
+---
+
+# System Flow
+
+```id="s9dkl2"
+Order Data (MongoDB)
+        ↓
 Impact Calculation (Backend Logic)
-↓
+        ↓
 Send Metrics to Gemini AI
-↓
+        ↓
 AI Generates Impact Summary
-↓
+        ↓
 Store Report with Order
+```
 
-AI Prompt Design
-Example prompt:
+---
 
+# AI Prompt Design
+
+The prompt ensures that the AI generates a **clear and concise sustainability report**.
+
+Example Prompt:
+
+```id="t7pl9x"
 Create a short sustainability impact report using the following data.
 
 Product: {productName}
@@ -235,66 +464,139 @@ Carbon Emissions Avoided: {carbonAvoided} grams CO2
 Local Sourcing: {localSource}
 
 Generate a simple human-readable sustainability statement.
+```
 
+---
 
-Module 4: AI WhatsApp Support Bot
-Architecture
-This module provides automated customer support through WhatsApp.
+# Features
 
-Components
-1. WhatsApp Integration
+* Automatic sustainability impact calculation
+* AI-generated readable sustainability reports
+* Integration with order data
+* Environmental metrics tracking
+* MongoDB storage for reporting history
 
-The system connects to WhatsApp using APIs such as:
+---
 
-WhatsApp Business API
+# Possible Future Improvements
 
-Twilio WhatsApp API
+* Carbon footprint visualization dashboard
+* Detailed sustainability analytics
+* Downloadable PDF impact reports
+* Company-wide sustainability performance tracking
 
-Customer messages are received through webhooks.
+---
+---
 
-2. Backend Processing
+# AI WhatsApp Support Bot
 
-The backend processes the incoming message and identifies the intent of the query.
+## Overview
+
+The **AI WhatsApp Support Bot** provides automated customer support through WhatsApp for an eco-friendly ecommerce platform.
+
+The system receives customer queries through WhatsApp, processes them using backend logic and AI, and returns helpful responses. For complex issues such as refunds or complaints, the system escalates the conversation to a human support agent.
+
+---
+
+# Architecture
+
+This module integrates **WhatsApp messaging APIs, backend processing, AI response generation, and database integration**.
+
+Technologies used:
+
+* **Backend:** Node.js + Express.js
+* **Messaging Integration:** WhatsApp Business API / Twilio WhatsApp API
+* **AI Processing:** Gemini API
+* **Database:** MongoDB
+
+---
+
+# System Components
+
+## 1. WhatsApp Integration
+
+The system connects to WhatsApp using messaging APIs such as:
+
+* **WhatsApp Business API**
+* **Twilio WhatsApp API**
+
+Customer messages are received through **webhooks**, which send incoming message data to the backend server.
+
+---
+
+## 2. Backend Processing
+
+The backend receives the incoming message and analyzes the **intent of the query**.
 
 Possible intents include:
 
-Order status queries
+* Order status queries
+* Return policy questions
+* Refund requests
+* General customer support queries
 
-Return policy questions
+The backend determines how the request should be handled.
 
-Refund requests
+---
 
-3. Database Integration
+## 3. Database Integration
 
-If the user asks about order status, the system fetches real order data from MongoDB.
+For queries related to **order status**, the system retrieves real order data from **MongoDB**.
 
-4. AI Response Generation
+This allows the bot to provide accurate information such as:
 
-Gemini AI generates helpful responses for customer questions.
+* Order confirmation
+* Shipping status
+* Delivery updates
 
-5. Escalation System
+---
 
-If the issue involves:
+## 4. AI Response Generation
 
-Refund requests
+For general support questions, the system sends the user query to **Gemini AI**.
 
-Complaints
+The AI generates helpful responses for:
 
-High-priority problems
+* Product questions
+* Sustainability information
+* Return policies
+* General customer assistance
 
-The conversation is escalated to a human support agent.
+---
 
-6. Conversation Logging
+## 5. Escalation System
 
-All messages are stored in the database for monitoring and analytics.
+Certain issues require human intervention.
 
-Flow
+If the query involves:
+
+* **Refund requests**
+* **Customer complaints**
+* **High-priority support issues**
+
+The conversation is **escalated to a human support agent** for further assistance.
+
+---
+
+## 6. Conversation Logging
+
+All conversations are stored in **MongoDB** for:
+
+* Monitoring customer interactions
+* Support analytics
+* Improving customer service quality
+
+---
+
+# System Flow
+
+```id="c8f3nq"
 Customer Message (WhatsApp)
-↓
+        ↓
 Webhook Request
-↓
+        ↓
 Backend Processing
-↓
+        ↓
 
 If Order Query
 → Fetch Order Data from Database
@@ -305,14 +607,21 @@ If Policy Question
 If Refund / Complaint
 → Escalate to Human Support
 
-↓
+        ↓
 Send Response to Customer
-↓
+        ↓
 Store Conversation Logs
+```
 
-AI Prompt Design
-Example prompt:
+---
 
+# AI Prompt Design
+
+The prompt ensures the AI responds like a helpful customer support assistant.
+
+Example Prompt:
+
+```id="u5k7pz"
 You are a customer support assistant for an eco-friendly ecommerce platform.
 
 User Question: {customerMessage}
@@ -322,3 +631,25 @@ Provide a clear and helpful answer.
 If the user asks about order status, use available order data.
 If the question relates to return policy, explain it simply.
 If the issue is related to refunds or complaints, recommend contacting human support.
+```
+
+---
+
+# Features
+
+* Automated WhatsApp customer support
+* AI-powered response generation
+* Order status retrieval from MongoDB
+* Smart query intent handling
+* Human escalation system
+* Conversation logging for analytics
+
+---
+
+# Possible Future Improvements
+
+* Multilingual customer support
+* Sentiment analysis for customer messages
+* AI-powered refund automation
+* Customer support dashboard
+* Voice message support
