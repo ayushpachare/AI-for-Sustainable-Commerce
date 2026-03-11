@@ -483,3 +483,6 @@ If the user asks about order status, use available order data.
 If the question relates to return policy, explain it simply.
 If the issue is related to refunds or complaints, recommend contacting human support.
 ```
+
+deploy link :- https://ai-for-sustainable-commerce.vercel.app/
+mp4 :- https://www.youtube.com/watch?v=TVotSByX5jQ
